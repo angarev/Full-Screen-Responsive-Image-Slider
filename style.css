@@ -95,6 +95,17 @@ button#prev {
 		left: 15px;
 }
 
+@media(max-width: 500px) {
+	.slide .content {
+			bottom: -300px;
+			left: 0;
+			width: 100%;
+	}
+
+	.slide.current .content {
+			transform: translateY(300px);
+	}
+}
 
 /*Backgrpund images*/
 .slide:first-child {

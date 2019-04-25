@@ -7,7 +7,7 @@ const next = document.getElementById('next');
 const prev = document.getElementById('prev');
 
 //Option to start slider auto
-const auto = false;
+const auto = true;
 
 //Set interval in ms
 const intervalTime = 5000;
@@ -57,6 +57,25 @@ const prevSlide = () => {
 
 
 //Add button events
+next.addEventListener('click', e => {
 
-next.addEventListener('click', nextSlide);
-prev.addEventListener('click', prevSlide);
+    nextSlide();
+    if (auto) {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, intervalTime);
+    }
+});
+prev.addEventListener('click', e => {
+    prevSlide();
+    if (auto) {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, intervalTime);
+    }
+});
+
+//Auto slide
+
+if (auto) {
+    //Run next slide at interval time
+    slideInterval = setInterval(nextSlide, intervalTime);
+}
